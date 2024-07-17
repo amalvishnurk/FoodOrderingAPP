@@ -1,6 +1,3 @@
-import React from "react"
-import ReactDOM from "react-dom/client"
-
 const restList = [
     {
         "info": {
@@ -912,68 +909,5 @@ const restList = [
     },
 
 ]
-const Header = () => {
-    return (
-        <div className="header">
-            <div className="logoContainer">
-                <img className="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxodBCOx28Vb76OItsEulidWkalURaNu3sMw&s" />
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
 
-const RestaurantCard = (props) => {
-    // console.log("rest:", restData.restData.info);
-    const { name, avgRating, areaName, cuisines, cloudinaryImageId, sla } = props.restData.info
-    return (
-        <div className="res-card">
-            <img className="res-logo" alt="res-logo"
-                src={'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/' + cloudinaryImageId} />
-            <h3>{name}</h3>
-            <h4>{areaName}</h4>
-            <h4>{cuisines?.join(',')}</h4>
-            <h4>Rating : {avgRating} stars</h4>
-            <h4>Delivery Time : {sla?.deliveryTime} minutes</h4>
-        </div>
-    )
-}
-
-const searchStyle = {
-    margin: "10px"
-}
-
-
-const Body = () => {
-    return (
-        <div className="body">
-            <div className="search" style={{ margin: "10px", padding: "10px" }}>search</div>
-            <div className="res-container">
-                {restList.map((restaurant) =>
-                    <RestaurantCard key={restaurant.info.id} restData={restaurant} />)
-                }
-
-
-            </div>
-
-        </div>
-    )
-}
-const AppLayout = () => {
-    return (
-        <div className="app">
-            <Header />
-            <Body />
-        </div>
-    )
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<AppLayout />)
+export default restList
