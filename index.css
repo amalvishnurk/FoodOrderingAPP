@@ -77,3 +77,16 @@
   justify-content: space-between;
   margin: 5px;
 }
+.cuisine {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+}
+
+.cuisine-item {
+  background-color: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin: 1px;
+}

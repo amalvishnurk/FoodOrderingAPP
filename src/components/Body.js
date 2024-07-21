@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard"
 import restList from "../utils.js/mockData"
 import { useEffect, useState } from "react"
 import Shimmer from '../components/Shimmer'
+import { SWIGGY_API, SWIGGY_URL } from "../utils.js/constants"
 
 const Body = () => {
     const [ListOfRestaurant, setListOfRestaurant] = useState([])
@@ -14,7 +15,7 @@ const Body = () => {
     }, [])
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+        const data = await fetch(SWIGGY_URL)
         const json = await data.json()
         setListOfRestaurant(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setfilteredRestaurants(json.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)

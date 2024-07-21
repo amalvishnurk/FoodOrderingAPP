@@ -8,11 +8,16 @@ const RestaurantCard = (props) => {
             <img className="res-logo" alt="res-logo"
                 src={CDN_URL + cloudinaryImageId} />
             <h3>{name}</h3>
-            <h4>{areaName}</h4>
-            <h4>{cuisines?.join(',')}</h4>
+            <h4>Location: {areaName}</h4>
+            {/* <h4 className="cuisine">{cuisines?.join(',')}</h4> */}
+            <div className="cuisine">
+                {cuisines?.slice(0, 5).map((cuisine, index) => (
+                    <span key={index} className="cuisine-item">{cuisine}</span>
+                ))}
+            </div>
             <h4>Rating : {avgRating} stars</h4>
             <h4>Delivery Time : {sla?.deliveryTime} minutes</h4>
-        </div>
+        </div >
     )
 }
 
