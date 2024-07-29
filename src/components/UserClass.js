@@ -4,29 +4,60 @@ class UserClass extends React.Component {
     constructor(props) {
         super(props)
         // console.log(props);
+        // this.state = {
+        //     count: 0,
+        // count2: 1
+        // }
+        // console.log(this.props.name + "child constructor")
         this.state = {
-            count: 0,
-            // count2: 1
+            userInfo: {
+                name: "Dummy",
+                location: 'Default',
+                avatar_url: "Default"
+            }
+
         }
-        console.log("child constructor")
     }
 
-    componentDidMount() {
-        console.log("child component mount")
+    async componentDidMount() {
+        // console.log(this.props.name + "child component mount")
+        const data = await fetch("https://api.github.com/users/amalvishnurk")
+        const json = await data.json()
+        console.log(json);
+        this.setState({
+            userInfo: json
+        }
+        )
+    }
+
+    componentDidUpdate() {
+        console.log("componentDidUpdate")
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount")
     }
 
     render() {
-        console.log("child render");
-        const { name, location } = this.props
-        const { count, count2 } = this.state
+        // console.log(this.props.name + "child render");
+        // const { name, location } = this.props
+        // const { count, count2 } = this.state
+
+        const { name, location, avatar_url } = this.state.userInfo
         return (
             <div className='userCard'>
-                <h3>Name : {name}</h3>
-                <h4>Location : {location}</h4>
-                <h4>Email : amal@gmail.com</h4>
-                <h5>count : {count} </h5>
+                <div >
+                    <img className="user-image" src={avatar_url}></img>
+                </div>
+                <div>
+                    <h3>Name : {name}</h3>
+                    <h4>Location : {location}</h4>
+                    <h4>Email : amal@gmail.com</h4>
+                </div>
+
+                {/* <h5>count : {count} </h5> */}
                 {/* <h5>count2 :{count2} </h5> */}
-                <button
+                {/* <button
                     onClick={() => {
                         // never update state like this
                         // this.state.count = this.state.count + 1
@@ -35,7 +66,7 @@ class UserClass extends React.Component {
                         })
                     }}
                 >
-                    Count Increase</button>
+                    Count Increase</button> */}
             </div>
         )
     }

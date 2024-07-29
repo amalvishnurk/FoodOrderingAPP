@@ -6,21 +6,31 @@ import React, { Component } from 'react'
 
 export default class About extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props)
-    console.log("parent constructor")
+    // console.log("parent constructor")
   }
 
-  componentDidMount(){
-    console.log("parent did mount")
+  componentDidMount() {
+    // console.log("parent did mount")
+    // this.timer = setInterval(() => {
+    //   console.log("Timer called")
+    // }, 1000);
+
+  }
+
+  componentWillUnmount() {
+    // console.log("componentWillUnmount")
+    // clearInterval(this.timer)
   }
   render() {
-    console.log("parent render")
+    // console.log("parent render")
     return (
       <div>
         <h2>About us</h2>
-        <User />
-        <UserClass name={"Amal vishnu (class)"} location={"Bangalore"} />
+        {/* <User /> */}
+        <UserClass />
+        {/* <UserClass name={"Elon (class)"} location={"Bangalore"} /> */}
       </div>
     )
   }
