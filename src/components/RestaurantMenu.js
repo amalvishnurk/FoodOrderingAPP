@@ -1,32 +1,14 @@
 import React, { useState } from 'react'
-import { useEffect } from 'react'
-import { SWIGGY_REST } from '../utils.js/constants'
 import Shimmer from './Shimmer'
 import { useParams } from 'react-router-dom'
+import useRestuarantMenu from '../utils.js/useRestuarantMenu'
 
 const RestaurantMenu = () => {
 
-    const [RestaurantDetail, setRestaurantDetail] = useState(null)
-    const [RestaurantMenu, setRestaurantMenu] = useState(null)
     const { restID } = useParams()
-    console.log(restID);
-    useEffect(() => {
-        fetchData()
-    }, [])
+    const { RestaurantDetail, RestaurantMenu } = useRestuarantMenu(restID)
 
-    const fetchData = async () => {
-        const data = await fetch(SWIGGY_REST + restID)
-        const json = await data.json()
-        // console.log("json", json?.data?.cards[4]?.groupedCard?.cardGroupMap.REGULAR?.cards[2]?.card?.card?.itemCards)
-        setRestaurantDetail(json?.data?.cards[2].card?.card.info)
-        setRestaurantMenu(json?.data?.cards[4]?.groupedCard?.cardGroupMap.REGULAR?.cards[2]?.card?.card?.itemCards)
-    }
-
-    // const { name } = RestaurantDetail?.cards[2]?.card?.card?.info;
-    // console.log("RestaurantDetail",RestaurantDetail)
-
-
-    return RestaurantDetail && setRestaurantMenu ? (<div>
+    return RestaurantDetail ? (<div>
         <h1>{RestaurantDetail?.name}</h1>
         <h4>{RestaurantDetail?.costForTwoMessage}</h4>
         <p>Cuisines: {RestaurantDetail?.cuisines.join(',')}</p>
