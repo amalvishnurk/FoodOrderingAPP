@@ -27,7 +27,7 @@ export default class About extends Component {
     // console.log("parent render")
     return (
       <div>
-        <h2>About us</h2>
+        <h2 className='font-bold mb-3'>About us</h2>
         {/* <User /> */}
         <UserClass />
         {/* <UserClass name={"Elon (class)"} location={"Bangalore"} /> */}

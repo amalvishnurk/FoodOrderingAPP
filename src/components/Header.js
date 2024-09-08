@@ -16,19 +16,19 @@ const Header = () => {
         // console.log("use effect rendered")
     }, [])
     return (
-        <div className="header">
+        <div className="flex justify-between items-center bg-green-50 lg:bg-gray-300  shadow-lg mb-10 ">
             <div className="logoContainer">
-                <img className="logo" src={LOGO_URL} />
+                <img className="w-32" src={LOGO_URL} />
             </div>
-            <div className="nav-items">
-                <ul>
+            <div className="">
+                <ul className="flex pr-5 font-medium">
                     
-                    <Link className='link' to='/'>Home</Link>
-                    <Link className='link' to='/about'>About Us</Link>
-                    <Link className='link' to='/contactUs'>Contact us</Link>
-                    <Link className="link" to='/grocery'>Grocery</Link>
-                    <li>Cart</li>
-                    <div className="loginButton">
+                    <Link className='pr-3' to='/'>Home</Link>
+                    <Link className='pr-3' to='/about'>About Us</Link>
+                    <Link className='pr-3' to='/contactUs'>Contact us</Link>
+                    <Link className="pr-3" to='/grocery'>Grocery</Link>
+                    <li className="pr-3">Cart</li>
+                    <div className="pr-3">
                         <button className="btn-login" onClick={() => handleclick()}>{button}</button>
                     </div>
                     <li>{onlineStatus? "Online 🟢":"Offline 🔴"}</li>

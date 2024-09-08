@@ -47,15 +47,15 @@ const Body = () => {
         return (
             ListOfRestaurant.length === 0 ? <Shimmer /> :
                 < div className="body" >
-                    <div className="filter">
+                    <div className="flex justify-between mb-10 mx-2">
                         <div className="search">
-                            <input type="text" onChange={(e) => handleChange(e)} value={searchTerm}></input>
-                            <button onClick={() => handleSearch()}>Search</button>
+                            <input className="border-slate-600 border rounded-md h-8" type="text" onChange={(e) => handleChange(e)} value={searchTerm}></input>
+                            <button className="bg-blue-500 px-6 py-1 ml-2 rounded-md" onClick={() => handleSearch()}>Search</button>
                         </div>
-                        <button button className="filter-btn" onClick={() => handleclick()}> Top rated Restaurants</button >
+                        <button button className="px-6 rounded-md py-1 bg-green-700 text-white" onClick={() => handleclick()}> Top rated Restaurants</button >
                     </div>
 
-                    <div className="res-container">
+                    <div className="flex flex-wrap">
                         {filteredRestaurants.map((restaurant) =>
                             <Link className="Link-card" key={restaurant.info.id} to={`/restaurant/${restaurant.info.id}`}><RestaurantCard key={restaurant.info.id} restData={restaurant} /></Link>)
                         }

@@ -4,13 +4,13 @@ const RestaurantCard = (props) => {
     // console.log("rest:", restData.restData.info);
     const { name, avgRating, areaName, cuisines, cloudinaryImageId, sla } = props.restData.info
     return (
-        <div className="res-card">
-            <img className="res-logo" alt="res-logo"
+        <div className="rounded-md w-[250px] h-[450px] p-2 bg-gray-200 m-2 hover:bg-gray-400">
+            <img className="rounded-md h-[236px] w-[236px]" alt="res-logo"
                 src={CDN_URL + cloudinaryImageId} />
-            <h3>{name}</h3>
+            <h3 className="my-2 font-medium">{name}</h3>
             <h4>Location: {areaName}</h4>
             {/* <h4 className="cuisine">{cuisines?.join(',')}</h4> */}
-            <div className="cuisine">
+            <div className="flex flex-wrap">
                 {cuisines?.slice(0, 5).map((cuisine, index) => (
                     <span key={index} className="cuisine-item">{cuisine}</span>
                 ))}
