@@ -20,5 +20,16 @@ const RestaurantCard = (props) => {
         </div >
     )
 }
+// Higher order component
+export const withVegLabel = (RestaurantCard) => {
+    return (props) => {
+        return (
+            <div>
+                <label className="bg-green-700 text-white rounded-md px-2 absolute">Veg</label>
+                <RestaurantCard {...props} />
+            </div>
+        )
+    }
+}
 
 export default RestaurantCard

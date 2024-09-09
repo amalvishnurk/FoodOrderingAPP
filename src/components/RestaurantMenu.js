@@ -9,14 +9,14 @@ const RestaurantMenu = () => {
     const { RestaurantDetail, RestaurantMenu } = useRestuarantMenu(restID)
 
     return RestaurantDetail ? (<div>
-        <h1>{RestaurantDetail?.name}</h1>
+        <h1 className='font-medium'>{RestaurantDetail?.name}</h1>
         <h4>{RestaurantDetail?.costForTwoMessage}</h4>
         <p>Cuisines: {RestaurantDetail?.cuisines.join(',')}</p>
         <p>Rating : {RestaurantDetail.avgRating}</p>
-        <h5>Menu</h5>
+        <h5 className='mt-3 font-medium '>Menu</h5>
         <ul>
             {RestaurantMenu.map(item =>
-                (<li key={item.card.info.id}>{item.card.info.name} - Rs {item.card.info.price / 100} </li>)
+                (<li className='ml-3' key={item.card.info.id}>{item.card.info.name} - Rs {item.card.info.price / 100} </li>)
             )}
         </ul>
 
