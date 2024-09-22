@@ -1,10 +1,11 @@
 import RestaurantCard, { withVegLabel } from "./RestaurantCard"
 import restList from "../utils.js/mockData"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Shimmer from '../components/Shimmer'
 import { SWIGGY_API, SWIGGY_URL } from "../utils.js/constants"
 import { Link } from "react-router-dom"
 import useOnlineStatus from "../utils.js/useOnlineStatus"
+import UserContext from "../utils.js/UserContext"
 
 const Body = () => {
     const [ListOfRestaurant, setListOfRestaurant] = useState([])
@@ -41,6 +42,8 @@ const Body = () => {
         setfilteredRestaurants(searchFilter)
     }
 
+    const { setUserName, loggedUser } = useContext(UserContext)
+
     if (!onlineStatus) {
         return <h1>You are Offline !! Please check your internet connection</h1>
     }
@@ -52,6 +55,13 @@ const Body = () => {
                     <div className="search">
                         <input className="border-slate-600 border rounded-md h-8" type="text" onChange={(e) => handleChange(e)} value={searchTerm}></input>
                         <button className="bg-blue-500 px-6 py-1 ml-2 rounded-md" onClick={() => handleSearch()}>Search</button>
+                    </div>
+                    <div>
+                        <label className="font-bold">User Name </label>
+                        <input className="border border-black rounded-md p-2 h-8"
+                            value={loggedUser}
+                            onChange={(e) => setUserName(e.target.value)}
+                        />
                     </div>
                     <button button className="px-6 rounded-md py-1 bg-green-700 text-white" onClick={() => handleclick()}> Top rated Restaurants</button >
                 </div>

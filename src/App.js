@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react"
+import React, { lazy, Suspense, useEffect, useState } from "react"
 import ReactDOM from "react-dom/client"
 import Header from "./components/Header"
 import Body from "./components/Body"
@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import ContactUs from "./components/ContactUs"
 import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
+import UserContext from "./utils.js/UserContext"
 // import Grocery from "./components/Grocery"
 
 
@@ -19,11 +20,40 @@ const Grocery = lazy(() => import("./components/Grocery"))
 const About = lazy(() => import("./components/About"))
 
 const AppLayout = () => {
+
+    const [userName, setUserName] = useState('')
+    useEffect(() => {
+        // api call to get user name
+        const data = {
+            userName: "Amal Vishnu"
+        }
+        setUserName(data.userName)
+    }, [])
     return (
-        <div className="px-2">
-            <Header />
-            <Outlet />
-        </div>
+
+        // <div className="px-2">
+        //     <UserContext.Provider value={{ loggedUser: userName }}>
+        //         <Header />
+        //     </UserContext.Provider>
+        //     <Outlet />
+        // </div>
+
+        // <UserContext.Provider value={{ loggedUser: userName }}>
+        //     <div className="px-2">
+
+        //         <UserContext.Provider value={{loggedUser:'Elon Musk'}}>
+        //             <Header />
+        //         </UserContext.Provider>
+        //         <Outlet />
+        //     </div>
+        // </UserContext.Provider>
+        <UserContext.Provider value={{ loggedUser: userName, setUserName }}>
+            <div className="px-2">
+                <Header />
+                <Outlet />
+            </div>
+        </UserContext.Provider>
+
     )
 }
 
